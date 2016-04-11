@@ -1,0 +1,32 @@
+JAVA P2
+_____________________________________________________________________________________________________
+
+//Game dev
+https://www.youtube.com/watch?v=Ca7UMGCH6EY
+
+//dyn4j - JavaFX
+http://bedroomcoders.co.uk/using-dyn4j-with-javafx/
+
+//Physics : timesteps - collisions
+http://gafferongames.com/game-physics/fix-your-timestep/
+http://www.dyn4j.org/2011/11/contact-points-using-clipping/
+
+//Java Game Forum - loop
+http://www.java-gaming.org/index.php?topic=35744.new
+
+//StackPane examples
+http://www.javafxapps.in/tutorial/StackPane-Example.html
+
+//StackPane - tips
+https://www.javacodegeeks.com/2014/08/javafx-tip-14-stackpane-children-hidden-but-not-gone.html
+
+//Menus
+https://www.youtube.com/watch?v=-19J5VKCRyE&list=PL4h6ypqTi3RQWPZfR6t73rxZK_TFkyURe&index=3&nohtml5=False
+
+
+//Sonstiges 
+http://www.indiedb.com/engines/wave-engine/tutorials/ui-controls-sample
+
+
+//Physics
+https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics
