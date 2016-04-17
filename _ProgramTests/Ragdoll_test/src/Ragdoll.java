@@ -302,6 +302,7 @@ public class Ragdoll extends SimulationFrame {
         leftFemurToLeftTibia.setMaximumMotorTorque(0.0);
         leftFemurToLeftTibia.setCollisionAllowed(false);
         world.addJoint(leftFemurToLeftTibia);
+
     }
 
     /* (non-Javadoc)
@@ -322,5 +323,6 @@ public class Ragdoll extends SimulationFrame {
     public static void main(String[] args) {
         Ragdoll simulation = new Ragdoll();
         simulation.run();
+
     }
 }

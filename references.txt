@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=Ca7UMGCH6EY
 
 //dyn4j - JavaFX
 http://bedroomcoders.co.uk/using-dyn4j-with-javafx/
+https://github.com/wnbittle/dyn4j/blob/master/examples/org/dyn4j/samples/Ragdoll.java
+http://www.dyn4j.org/documentation/advanced/
 
 //Physics : timesteps - collisions
 http://gafferongames.com/game-physics/fix-your-timestep/
