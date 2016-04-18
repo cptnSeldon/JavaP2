@@ -9,6 +9,15 @@ http://bedroomcoders.co.uk/using-dyn4j-with-javafx/
 https://github.com/wnbittle/dyn4j/blob/master/examples/org/dyn4j/samples/Ragdoll.java
 http://www.dyn4j.org/documentation/advanced/
 
+//JavaFX
+https://docs.oracle.com/javase/8/javafx/api/javafx/scene/shape/MoveTo.html
+
+//JavaFx vs Swing
+http://stackoverflow.com/questions/22808223/javafx-8-swing-compatibility
+
+//Physics
+https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics
+
 //Physics : timesteps - collisions
 http://gafferongames.com/game-physics/fix-your-timestep/
 http://www.dyn4j.org/2011/11/contact-points-using-clipping/
@@ -29,6 +38,3 @@ https://www.youtube.com/watch?v=-19J5VKCRyE&list=PL4h6ypqTi3RQWPZfR6t73rxZK_TFky
 //Sonstiges 
 http://www.indiedb.com/engines/wave-engine/tutorials/ui-controls-sample
 
-
-//Physics
-https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics
