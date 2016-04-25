@@ -14,12 +14,14 @@ package layouts;
  *      GAME OVER
  */
 
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
 /** MENU LAYOUT : class */
-public class MenuLayout extends BorderPane {
+public class MenuLayout extends BorderPane{
 
     //   BorderPane :
     //      top
@@ -35,8 +37,6 @@ public class MenuLayout extends BorderPane {
     VBox bottom;
     /** constructor */
     public MenuLayout(){
-
-
 
     }
 }
