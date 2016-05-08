@@ -3,6 +3,13 @@
  */
 
 import java.awt.Graphics2D;
+import java.awt.Point;
+import java.awt.RenderingHints.Key;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 import org.dyn4j.dynamics.Body;
 import org.dyn4j.dynamics.BodyFixture;
@@ -13,6 +20,7 @@ import org.dyn4j.geometry.MassType;
 import org.dyn4j.geometry.Vector2;
 
 public class Stickman extends SimulationFrame{
+    private boolean isDragged =false;
 
     Stickman(){
         super("Stickman" , 64);
@@ -83,15 +91,46 @@ public class Stickman extends SimulationFrame{
         trunk.translate(new Vector2(0., -1.62));
         world.addBody(trunk);
 
-        /*
+
         //left Arm
         Body leftArm = new SimulationBody();
-        c = Geometry.createRectangle(0.1, 2.5);
+        c = Geometry.createRectangle(1.5, 0.15);
         bf = new BodyFixture(c);
         leftArm.addFixture(bf);
         leftArm.setMass(MassType.NORMAL);
-        leftArm.translate(new Vector2(0., -1.62));
-        world.addBody(trunk);*/
+        leftArm.translate(new Vector2(0.85, -0.8));
+        world.addBody(leftArm);
+
+
+        //right Arm
+        Body rightArm = new SimulationBody();
+        c = Geometry.createRectangle(1.5, 0.15);
+        bf = new BodyFixture(c);
+        rightArm.addFixture(bf);
+        rightArm.setMass(MassType.NORMAL);
+        rightArm.translate(new Vector2(-0.85, -0.8));
+        world.addBody(rightArm);
+
+
+        //
+        Body leftLeg = new SimulationBody();
+        c = Geometry.createRectangle(1.5, 0.15);
+        bf = new BodyFixture(c);
+        leftLeg.addFixture(bf);
+        leftLeg.setMass(MassType.NORMAL);
+        leftLeg.translate(new Vector2(0.85, -2.87));
+        world.addBody(leftLeg);
+
+
+        //left Arm
+        Body rightLeg = new SimulationBody();
+        c = Geometry.createRectangle(1.5, 0.15);
+        bf = new BodyFixture(c);
+        rightLeg.addFixture(bf);
+        rightLeg.setMass(MassType.NORMAL);
+        rightLeg.translate(new Vector2(-0.85, -2.87));
+        world.addBody(rightLeg);
+
 
 
 
@@ -105,8 +144,49 @@ public class Stickman extends SimulationFrame{
         trunkHead.setMotorSpeed(Math.toRadians(0.0));
         trunkHead.setMaximumMotorTorque(0.0);
         trunkHead.setCollisionAllowed(false);
-
         world.addJoint(trunkHead);
+
+        RevoluteJoint trunkLeftArm = new RevoluteJoint(trunk, leftArm, new Vector2(0.1, -0.8));
+        trunkLeftArm.setLimitEnabled(true);
+        trunkLeftArm.setLimits(Math.toRadians(-45.0), Math.toRadians(45.0));
+        //trunkHead.setReferenceAngle(Math.toRadians(0.0));
+        trunkLeftArm.setMotorEnabled(false);
+        trunkLeftArm.setMotorSpeed(Math.toRadians(0.0));
+        trunkLeftArm.setMaximumMotorTorque(0.0);
+        trunkLeftArm.setCollisionAllowed(false);
+        world.addJoint(trunkLeftArm);
+
+        RevoluteJoint trunkRightArm = new RevoluteJoint(trunk, rightArm, new Vector2(-0.1, -0.8));
+        trunkRightArm.setLimitEnabled(true);
+        trunkRightArm.setLimits(Math.toRadians(-45.0), Math.toRadians(45.0));
+        //trunkRightArm.setReferenceAngle(Math.toRadians(0.0));
+        trunkRightArm.setMotorEnabled(false);
+        trunkRightArm.setMotorSpeed(Math.toRadians(0.0));
+        trunkRightArm.setMaximumMotorTorque(0.0);
+        trunkRightArm.setCollisionAllowed(false);
+        world.addJoint(trunkRightArm);
+
+        RevoluteJoint trunkLeftLeg = new RevoluteJoint(trunk, leftLeg, new Vector2(0.1, -2.87));
+        trunkLeftLeg.setLimitEnabled(true);
+        trunkLeftLeg.setLimits(Math.toRadians(-30.0), Math.toRadians(45.0));
+        trunkLeftLeg.setReferenceAngle(Math.toRadians(45.0));
+        trunkLeftLeg.setMotorEnabled(false);
+        trunkLeftLeg.setMotorSpeed(Math.toRadians(0.0));
+        trunkLeftLeg.setMaximumMotorTorque(0.0);
+        trunkLeftLeg.setCollisionAllowed(false);
+        world.addJoint(trunkLeftLeg);
+
+        RevoluteJoint trunkRightLeg = new RevoluteJoint(trunk, rightLeg, new Vector2(-0.1, -2.87));
+        trunkRightLeg.setLimitEnabled(true);
+        trunkRightLeg.setLimits(Math.toRadians(-30.0), Math.toRadians(45.0));
+        trunkRightLeg.setReferenceAngle(Math.toRadians(-45.0));
+        trunkRightLeg.setMotorEnabled(false);
+        trunkRightLeg.setMotorSpeed(Math.toRadians(0.0));
+        trunkRightLeg.setMaximumMotorTorque(0.0);
+        trunkRightLeg.setCollisionAllowed(false);
+        world.addJoint(trunkRightLeg);
+
+
 
 
 
@@ -395,6 +475,90 @@ public class Stickman extends SimulationFrame{
 
         */
 
+        this.addMouseListenerToCanvas(new MouseListener() {
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+                moveBodyToPointer(head,e.getPoint(), 50, 100);
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+        });
+
+        this.addKeyListenerToCanvas(new KeyListener() {
+
+            @Override
+            public void keyTyped(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyChar()=='w')
+                {
+                    head.applyForce(new Vector2(0,300));
+                }
+                if (e.getKeyChar()=='s')
+                {
+                    head.applyForce(new Vector2(0,-300));
+                }
+                if (e.getKeyChar()=='a')
+                {
+                    head.applyForce(new Vector2(-300,0));
+                }
+                if (e.getKeyChar()=='d')
+                {
+                    head.applyForce(new Vector2(300,0));
+                }
+
+            }
+        });
+
+    }
+
+
+
+    private void moveBodyToPointer(Body b, Point p, double forceX, double forceY)
+    {
+        double bodyPosX = b.getTransform().getTranslationX()+11;
+        double bodyPosY = b.getTransform().getTranslationY()+11;
+        double xPoint = p.x/64;
+        double yPoint = 11-p.y/64;
+        double moveX = -(bodyPosX-xPoint);
+        double moveY = -(bodyPosY-yPoint);
+
+        //System.out.println(bodyPosY+", "+yPoint+", "+moveY);
+        b.applyForce(new Vector2(moveX*forceX,moveY*forceY));
 
     }
 

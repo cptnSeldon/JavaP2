@@ -29,6 +29,10 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Toolkit;
+import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.AffineTransform;
@@ -39,6 +43,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import org.dyn4j.dynamics.World;
+import org.dyn4j.geometry.Vector2;
 
 /**
  * A simple scene of a bowling ball bouncing on the floor.
@@ -127,8 +132,19 @@ public abstract class SimulationFrame extends JFrame {
 
         // setup the world
         this.initializeWorld();
+
+    }
+    public void addMouseListenerToCanvas(MouseListener ml){
+        this.canvas.addMouseListener(ml);
+    }
+    public void addMouseMotionToCanvas(MouseMotionListener mml){
+        this.canvas.addMouseMotionListener(mml);
     }
 
+    public void addKeyListenerToCanvas(KeyListener kl){
+        this.canvas.addKeyListener(kl);
+
+    }
     /**
      * Creates game objects and adds them to the world.
      */
